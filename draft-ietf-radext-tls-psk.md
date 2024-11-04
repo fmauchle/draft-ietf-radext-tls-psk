@@ -362,7 +362,7 @@ That is, client configuration is relatively simple: use a particular set of cred
 
 ### Resumption
 
-There will also be systems which support both TLS-PSK and other TLS-based authentication methods such as certificates as well as session resumption.  It is therefore vital for servers to be able to distinguish the use-case of TLS-PSK with pre-configured identities from TLS-PSK which is being used for resumptions.
+In the context of TLS-PSK, there is little use for doing session resumption since TLS-PSK already uses a minimal handshake. Therefore it is NOT RECOMMENDED to enable session resumption for TLS-PSK connections. However there will also be systems which support both TLS-PSK and other TLS-based authentication methods such as certificates as well as session resumption.  It is therefore vital for servers to be able to distinguish the use-case of TLS-PSK with pre-configured identities from TLS-PSK which is being used for resumptions.
 
 The above discussion of PSK identities is therefore complicated by the use of PSKs for resumption in TLS 1.3.  A server which receives a PSK identity via TLS typically cannot query the TLS layer to see if this identity is for a resumed session (which is possibly for another TLS authentication method), or is instead a static pre-provisioned identity.  This confusion complicates server implementations.
 
